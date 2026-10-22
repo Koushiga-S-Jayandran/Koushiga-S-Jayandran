@@ -292,12 +292,19 @@ export const ParticlePortrait: React.FC = () => {
             ref={portraitFrameRef}
             onMouseMove={handleFrameMouseMove}
             onMouseLeave={handleFrameMouseLeave}
-            className="relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96 rounded-3xl overflow-hidden bg-[#0A0A0B] border border-[#7FA6E0]/25 shadow-2xl shadow-[#7FA6E0]/5 transition-all duration-500 group"
+            className={`relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96 rounded-3xl overflow-hidden bg-[#0A0A0B] border transition-all duration-500 group ${
+              isPhotoCrossfaded
+                ? 'border-[#7FA6E0] ring-2 ring-[#7FA6E0]/40 shadow-2xl shadow-[#7FA6E0]/20'
+                : 'border-[#7FA6E0]/30 shadow-2xl shadow-[#7FA6E0]/5'
+            }`}
           >
             {/* Base static photo layer at ~30% opacity so face is always clearly recognizable */}
             <img
               src={profilePhoto}
               alt="Portrait of Koushiga S. Jayandran"
+              width={400}
+              height={400}
+              style={{ objectPosition: '50% 25%' }}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out pointer-events-none ${
                 prefersReducedMotion || isPhotoCrossfaded ? 'opacity-100' : 'opacity-30'
               }`}

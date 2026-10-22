@@ -104,6 +104,13 @@ export const Navbar: React.FC = () => {
 
         {/* Right CTA */}
         <div className="hidden md:flex items-center gap-3">
+          <a
+            href="/resume.pdf"
+            download="Koushiga_S_Jayandran_Resume.pdf"
+            className="px-3.5 py-1.5 rounded-full text-xs font-medium text-[#9AA3AF] hover:text-white border border-white/10 hover:border-[#7FA6E0]/40 transition-all"
+          >
+            Download resume
+          </a>
           <button
             type="button"
             onClick={() => scrollToSection('contact')}
@@ -143,7 +150,14 @@ export const Navbar: React.FC = () => {
                 {item.label}
               </button>
             ))}
-            <div className="pt-3 mt-2 border-t border-white/8">
+            <div className="pt-3 mt-2 border-t border-white/8 flex flex-col gap-2">
+              <a
+                href="/resume.pdf"
+                download="Koushiga_S_Jayandran_Resume.pdf"
+                className="w-full py-2.5 px-3 rounded-lg text-center text-sm font-medium border border-white/15 text-[#F2F4F7] hover:border-[#7FA6E0]/50 hover:bg-white/5 transition-colors"
+              >
+                Download resume
+              </a>
               <button
                 type="button"
                 onClick={() => scrollToSection('contact')}

@@ -12,7 +12,6 @@ import { ArrowDown, FileText, ChevronDown } from 'lucide-react';
 export const HeroGlobe: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [hasResume, setHasResume] = useState<boolean>(true);
   const [targetYaw, setTargetYaw] = useState<number>(0.2);
   const [targetTilt, setTargetTilt] = useState<number>(0.25);
 
@@ -21,26 +20,6 @@ export const HeroGlobe: React.FC = () => {
   const isVisibleRef = useRef<boolean>(true);
   const isTouchRef = useRef<boolean>(false);
   const animationFrameId = useRef<number | null>(null);
-
-  // Check if resume.pdf exists via HEAD request
-  useEffect(() => {
-    let isMounted = true;
-    fetch(PORTFOLIO_DATA.hero.resumeUrl, { method: 'HEAD' })
-      .then((res) => {
-        if (isMounted) {
-          setHasResume(res.ok);
-        }
-      })
-      .catch(() => {
-        if (isMounted) {
-          setHasResume(false);
-        }
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   // Canvas 2D 3D Globe Animation
   useEffect(() => {
@@ -341,17 +320,14 @@ export const HeroGlobe: React.FC = () => {
               <ArrowDown className="w-4 h-4" />
             </button>
 
-            {hasResume && (
-              <a
-                href={PORTFOLIO_DATA.hero.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#0A0A0B] text-[#F2F4F7] text-sm font-medium border border-white/15 hover:border-[#7FA6E0]/50 hover:bg-[#111113] transition-all duration-200"
-              >
-                <FileText className="w-4 h-4 text-[#7FA6E0]" />
-                <span>Download resume</span>
-              </a>
-            )}
+            <a
+              href="/resume.pdf"
+              download="Koushiga_S_Jayandran_Resume.pdf"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#0A0A0B] text-[#F2F4F7] text-sm font-medium border border-white/15 hover:border-[#7FA6E0]/50 hover:bg-[#111113] transition-all duration-200"
+            >
+              <FileText className="w-4 h-4 text-[#7FA6E0]" />
+              <span>Download resume</span>
+            </a>
           </div>
         </div>
 
