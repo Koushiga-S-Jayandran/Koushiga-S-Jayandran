@@ -3,7 +3,6 @@ export interface PortfolioData {
     yearLabel: string;
     name: string;
     subtitle: string;
-    resumeUrl: string;
     targetSectionId: string;
   };
   intro: {
@@ -89,7 +88,6 @@ export const PORTFOLIO_DATA: PortfolioData = {
     yearLabel: 'PORTFOLIO 2026',
     name: 'Koushiga S. Jayandran',
     subtitle: 'Aspiring security engineer · Web builder · AI/ML learner',
-    resumeUrl: '/resume.pdf',
     targetSectionId: 'web-builds',
   },
   intro: {

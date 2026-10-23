@@ -24,33 +24,51 @@ export default function App() {
         <CustomCursor />
 
         {/* Sticky blur navbar */}
-        <Navbar />
+        <ErrorBoundary fallbackTitle="Navigation">
+          <Navbar />
+        </ErrorBoundary>
 
         {/* Main Content Sections */}
         <main>
           {/* Section 1: Hero Orbit Globe */}
-          <HeroGlobe />
+          <ErrorBoundary fallbackTitle="Hero Section">
+            <HeroGlobe />
+          </ErrorBoundary>
 
           {/* Section 2: Intro Particle Portrait */}
-          <ParticlePortrait />
+          <ErrorBoundary fallbackTitle="About Section">
+            <ParticlePortrait />
+          </ErrorBoundary>
 
           {/* Section 3: Web Builds (TamizN Visa & SREC Blood Donation) */}
-          <WebBuilds />
+          <ErrorBoundary fallbackTitle="Web Builds Section">
+            <WebBuilds />
+          </ErrorBoundary>
 
           {/* Section 4: TriShield Signal Story (Scroll-Pinned) */}
-          <SignalStory />
+          <ErrorBoundary fallbackTitle="TriShield Story Section">
+            <SignalStory />
+          </ErrorBoundary>
 
           {/* Section 5: Technical Skills */}
-          <SkillsSection />
+          <ErrorBoundary fallbackTitle="Technical Skills Section">
+            <SkillsSection />
+          </ErrorBoundary>
 
           {/* Section 6: Achievements & Milestones Timeline */}
-          <AchievementsSection />
+          <ErrorBoundary fallbackTitle="Achievements Section">
+            <AchievementsSection />
+          </ErrorBoundary>
 
           {/* Section 7: Academic Background & Interests */}
-          <EducationInterests />
+          <ErrorBoundary fallbackTitle="Education & Interests Section">
+            <EducationInterests />
+          </ErrorBoundary>
 
           {/* Section 8: Contact & Footer */}
-          <ContactFooter />
+          <ErrorBoundary fallbackTitle="Contact & Footer Section">
+            <ContactFooter />
+          </ErrorBoundary>
         </main>
       </div>
     </ErrorBoundary>

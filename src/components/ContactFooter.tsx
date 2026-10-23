@@ -2,6 +2,7 @@ import React from 'react';
 import profilePhoto from '../assets/profile.jpg';
 import { PORTFOLIO_DATA } from '../data/portfolio';
 import { Mail, Linkedin, Github, ArrowUpRight, MessageSquareCode } from 'lucide-react';
+import { ResumeDownload } from './ResumeDownload';
 
 export const ContactFooter: React.FC = () => {
   const { contact } = PORTFOLIO_DATA;
@@ -23,11 +24,11 @@ export const ContactFooter: React.FC = () => {
             {/* Circular avatar with the same imported photo */}
             <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#7FA6E0]/40 p-0.5 shrink-0">
               <img
-                src={profilePhoto}
-                alt="Portrait of Koushiga S. Jayandran"
+                src="/profile.jpeg"
+                alt="Koushiga S. Jayandran"
                 width={56}
                 height={56}
-                style={{ objectPosition: '50% 25%' }}
+                style={{ objectFit: 'cover', objectPosition: 'top' }}
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
@@ -116,13 +117,7 @@ export const ContactFooter: React.FC = () => {
         <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#9AA3AF]">
           <div>{contact.copyright}</div>
           <div className="flex items-center gap-6">
-            <a
-              href="/resume.pdf"
-              download="Koushiga_S_Jayandran_Resume.pdf"
-              className="text-[#7FA6E0] hover:text-white transition-colors flex items-center gap-1.5"
-            >
-              <span>Download resume</span>
-            </a>
+            <ResumeDownload variant="footer" />
             <a
               href={contact.emailHref}
               className="hover:text-white transition-colors"

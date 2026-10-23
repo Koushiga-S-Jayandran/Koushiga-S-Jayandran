@@ -7,7 +7,8 @@ import {
   calculateGreatCircleArc,
   Point3D,
 } from '../utils/globeMath';
-import { ArrowDown, FileText, ChevronDown } from 'lucide-react';
+import { ArrowDown, ChevronDown } from 'lucide-react';
+import { ResumeDownload } from './ResumeDownload';
 
 export const HeroGlobe: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -292,25 +293,48 @@ export const HeroGlobe: React.FC = () => {
 
       {/* Hero Foreground Content */}
       <div className="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-        <div className="md:col-span-7 flex flex-col items-start text-left">
+        <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left">
           {/* Label PORTFOLIO 2026 */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#111113] border border-white/10 text-xs font-mono tracking-widest text-[#7FA6E0] uppercase mb-6">
             <span className="w-2 h-2 rounded-full bg-[#7FA6E0] animate-pulse" />
             {PORTFOLIO_DATA.hero.yearLabel}
           </div>
 
-          {/* Name in large display serif */}
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-[#F2F4F7] tracking-tight leading-[1.05] mb-6">
-            {PORTFOLIO_DATA.hero.name}
-          </h1>
+          {/* Photo next to Name & Tagline: stacked & centered on mobile, side by side on desktop */}
+          <div className="flex flex-col items-center md:flex-row md:items-center gap-6 lg:gap-8 mb-8 w-full">
+            {/* Softly rounded portrait */}
+            <div className="relative shrink-0">
+              <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-3xl overflow-hidden bg-[#0A0A0B] border-2 border-[#7FA6E0]/40 shadow-2xl shadow-[#7FA6E0]/20 group transition-all duration-300">
+                <img
+                  src="/profile.jpeg"
+                  alt="Koushiga S. Jayandran"
+                  width={224}
+                  height={224}
+                  style={{ objectFit: 'cover', objectPosition: 'top' }}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                {/* Existing subtle card highlight and scanline effect */}
+                <div className="absolute inset-0 rounded-3xl pointer-events-none ring-1 ring-inset ring-white/10" />
+                <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+                  <div className="w-full h-16 bg-gradient-to-b from-transparent via-[#7FA6E0]/15 to-transparent -translate-y-full animate-[scan_6s_ease-in-out_infinite]" />
+                </div>
+              </div>
+            </div>
 
-          {/* Subtitle */}
-          <p className="text-lg sm:text-xl md:text-2xl text-[#9AA3AF] font-light max-w-2xl leading-relaxed mb-10">
-            {PORTFOLIO_DATA.hero.subtitle}
-          </p>
+            {/* Name and Tagline */}
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-normal text-[#F2F4F7] tracking-tight leading-[1.08] mb-3">
+                {PORTFOLIO_DATA.hero.name}
+              </h1>
+
+              <p className="text-base sm:text-lg md:text-xl text-[#9AA3AF] font-light max-w-xl leading-relaxed">
+                {PORTFOLIO_DATA.hero.subtitle}
+              </p>
+            </div>
+          </div>
 
           {/* Buttons: View my work & Download resume */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
             <button
               type="button"
               onClick={handleScrollToWork}
@@ -320,14 +344,7 @@ export const HeroGlobe: React.FC = () => {
               <ArrowDown className="w-4 h-4" />
             </button>
 
-            <a
-              href="/resume.pdf"
-              download="Koushiga_S_Jayandran_Resume.pdf"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#0A0A0B] text-[#F2F4F7] text-sm font-medium border border-white/15 hover:border-[#7FA6E0]/50 hover:bg-[#111113] transition-all duration-200"
-            >
-              <FileText className="w-4 h-4 text-[#7FA6E0]" />
-              <span>Download resume</span>
-            </a>
+            <ResumeDownload variant="hero" />
           </div>
         </div>
 

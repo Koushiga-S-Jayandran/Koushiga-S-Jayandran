@@ -285,28 +285,28 @@ export const ParticlePortrait: React.FC = () => {
       ref={containerRef}
       className="relative min-h-screen py-24 px-6 md:px-12 bg-[#000000] border-t border-white/5 flex items-center justify-center overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        {/* Left Column: Portrait Container (Particles + Photo Layer) */}
-        <div className="lg:col-span-5 flex flex-col items-center justify-center">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+        {/* Left Column: Portrait Container (Particles + Photo Layer) — Smaller version in About section */}
+        <div className="md:col-span-5 flex flex-col items-center justify-center">
           <div
             ref={portraitFrameRef}
             onMouseMove={handleFrameMouseMove}
             onMouseLeave={handleFrameMouseLeave}
-            className={`relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96 rounded-3xl overflow-hidden bg-[#0A0A0B] border transition-all duration-500 group ${
+            className={`relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-3xl overflow-hidden bg-[#0A0A0B] border transition-all duration-500 group ${
               isPhotoCrossfaded
                 ? 'border-[#7FA6E0] ring-2 ring-[#7FA6E0]/40 shadow-2xl shadow-[#7FA6E0]/20'
                 : 'border-[#7FA6E0]/30 shadow-2xl shadow-[#7FA6E0]/5'
             }`}
           >
-            {/* Base static photo layer at ~30% opacity so face is always clearly recognizable */}
+            {/* Base static photo layer */}
             <img
-              src={profilePhoto}
-              alt="Portrait of Koushiga S. Jayandran"
-              width={400}
-              height={400}
-              style={{ objectPosition: '50% 25%' }}
+              src="/profile.jpeg"
+              alt="Koushiga S. Jayandran"
+              width={160}
+              height={160}
+              style={{ objectFit: 'cover', objectPosition: 'top' }}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out pointer-events-none ${
-                prefersReducedMotion || isPhotoCrossfaded ? 'opacity-100' : 'opacity-30'
+                prefersReducedMotion || isPhotoCrossfaded ? 'opacity-100' : 'opacity-90'
               }`}
             />
 
@@ -326,21 +326,21 @@ export const ParticlePortrait: React.FC = () => {
               className="absolute inset-0 pointer-events-none overflow-hidden"
               aria-hidden="true"
             >
-              <div className="w-full h-24 bg-gradient-to-b from-transparent via-[#7FA6E0]/15 to-transparent -translate-y-full animate-[scan_6s_ease-in-out_infinite]" />
+              <div className="w-full h-16 bg-gradient-to-b from-transparent via-[#7FA6E0]/15 to-transparent -translate-y-full animate-[scan_6s_ease-in-out_infinite]" />
             </div>
 
             {/* Minimal HUD frame overlays */}
-            <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#000000]/60 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#7FA6E0] flex items-center gap-1.5">
-              <Scan className="w-3 h-3 text-[#7FA6E0]" />
-              <span>KSJ-BIO-ID</span>
+            <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-[#000000]/60 backdrop-blur-md border border-white/10 text-[9px] font-mono text-[#7FA6E0] flex items-center gap-1">
+              <Scan className="w-2.5 h-2.5 text-[#7FA6E0]" />
+              <span>KSJ-BIO</span>
             </div>
 
-            <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-[#000000]/60 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#9AA3AF]">
-              SREC · M.Tech CSE (Int.)
+            <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-[#000000]/60 backdrop-blur-md border border-white/10 text-[9px] font-mono text-[#9AA3AF]">
+              SREC · CSE
             </div>
           </div>
 
-          <p className="mt-4 text-xs font-mono text-[#9AA3AF]/60 tracking-wider text-center">
+          <p className="mt-3 text-[11px] font-mono text-[#9AA3AF]/60 tracking-wider text-center">
             {prefersReducedMotion
               ? 'Static portrait display'
               : 'Interactive particle array · Hover to disperse'}
@@ -348,7 +348,7 @@ export const ParticlePortrait: React.FC = () => {
         </div>
 
         {/* Right Column: Statement, Vision, and 3 Chips */}
-        <div className="lg:col-span-7 flex flex-col items-start text-left">
+        <div className="md:col-span-7 flex flex-col items-start text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#111113] border border-white/10 text-xs font-mono tracking-widest text-[#7FA6E0] uppercase mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Profile & Direction</span>

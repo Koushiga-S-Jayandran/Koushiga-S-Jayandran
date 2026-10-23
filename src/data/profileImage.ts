@@ -1,9 +1,8 @@
-import profilePhotoAsset from '../assets/profile.jpg';
-
 /**
- * Single imported profile image used consistently across:
- * 1. Intro section Particle Portrait (canvas sampling & underlayer)
- * 2. Contact section circular avatar beside "Let's talk"
- * 3. Reduced motion static fallback
+ * Single profile image used across:
+ * 1. Hero section portrait next to name and tagline
+ * 2. About section particle portrait
+ * 3. Contact section circular avatar beside "Let's talk"
  */
-export const profilePhoto: string = profilePhotoAsset;
+export const profilePhoto: string = '/profile.jpeg';
+
